@@ -3,6 +3,7 @@ package ptutMusee.ptutMuseeBesancon.dao;
 import jakarta.persistence.Tuple;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import ptutMusee.ptutMuseeBesancon.entity.Categorie;
 
 import java.util.List;
 

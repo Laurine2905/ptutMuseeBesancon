@@ -13,19 +13,27 @@ import java.util.List;
 // cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
-public class Salle {
+public class Categorie {
     // Identifiant technique
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Salle_id;
+    private Integer Categorie_id;
 
     // Nom de la catégorie = OBLIGATOIRE
     @Column(nullable = false, unique=true)
     @NonNull
-    private String Salle_nom;
+    private String Categorie_nom;
 
-    // una salle contient 0 ou plusieurs objet -> liste
-    @OneToMany(mappedBy="salle")
+    // description de la categorie
+    @Column(nullable = true, unique=true)
+    private String Categorie_description;
+
+    //Photo trouvée via un URL = OBLIGATOIRE
+    @Column(nullable = false, unique=true)
+    @NonNull
+    private String Categorie_photo;
+
+    // il y a 0* objets dans une categorie
+    @OneToMany(mappedBy="categorie")
     @ToString.Exclude // On ne veut pas inclure la liste des objets dans le toString
     private List<Objet> objets = new ArrayList<>();
-
 }
